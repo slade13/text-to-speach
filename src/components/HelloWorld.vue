@@ -2,45 +2,79 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
+      Enter the text below:
     </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+    <textarea id="textToSpeech" v-model="tts"></textarea>
+    <button @click="submitText">Submit</button>
+    <audio controls v-if="showPlayer">
+      <source :src="returnedAudio" type="audio/mp3" />
+    </audio>
   </div>
 </template>
 
 <script>
+const axios = require("axios");
+
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data() {
+    return {
+      tts: "",
+      showPlayer: false,
+      returnedAudio: "data:audio/mpeg;base64,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qqqqqqqqqqqqqqqqqqqqqkxBTUUzLjk5LjWqqqqqqqqqqqr/4xjExAAAA0gAAAAAqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqkxBTUUzLjk5LjWqqqqqqqqqqqr/4xjExAAAA0gAAAAAqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqkxBTUUzLjk5LjWqqqqqqqqqqqr/4xjExAAAA0gAAAAAqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqkxBTUUzLjk5LjWqqqqqqqqqqqr/4xjExAAAA0gAAAAAqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqkxBTUUzLjk5LjWqqqqqqqqqqqr/4xjExAAAA0gAAAAAqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqkxBTUUzLjk5LjWqqqqqqqqqqqr/4xjExAAAA0gAAAAAqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqkxBTUUzLjk5LjWqqqqqqqqqqqr/4xjExAAAA0gAAAAAqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqr/4xjExAAAA0gAAAAAqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqr/4xjExAAAA0gAAAAAqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqr/4xjExAAAA0gAAAAAqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqo="
+    }
+  },
+  methods: {
+    submitText() {
+      const encodedParams = new URLSearchParams();
+      encodedParams.append("src", this.tts);
+      encodedParams.append("hl", "en-us");
+      encodedParams.append("r", "0");
+      encodedParams.append("c", "mp3");
+      encodedParams.append("f", "8khz_8bit_mono");
+      encodedParams.append("b64", "true");
+
+      const options = {
+        method: 'POST',
+        url: 'https://voicerss-text-to-speech.p.rapidapi.com/',
+        params: {key: '3c482580692a4feaa24fb6df0c0be376'},
+        headers: {
+          'content-type': 'application/x-www-form-urlencoded',
+          'X-RapidAPI-Key': '518d6d6840msh9ac08012f6cc73fp1f2543jsna24bae0170a3',
+          'X-RapidAPI-Host': 'voicerss-text-to-speech.p.rapidapi.com'
+        },
+        data: encodedParams
+      };
+      let vm = this;
+      axios.request(options).then(function (response) {
+        console.log(response.data);
+        vm.returnedAudio = response.data;
+        vm.showPlayer = true;
+      }).catch(function (error) {
+        console.error(error);
+        vm.showPlayer = false;
+      });
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#textToSpeech {
+  width: 500px;
+  height: 150px;
+}
+
+button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 h3 {
   margin: 40px 0 0;
 }
