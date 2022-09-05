@@ -14,6 +14,7 @@
 
 <script>
 const axios = require("axios");
+const config = require("../config.js");
 
 export default {
   name: 'HelloWorld',
@@ -37,18 +38,17 @@ export default {
       encodedParams.append("f", "8khz_8bit_mono");
       encodedParams.append("b64", "true");
 
+      let vm = this;
+
       const options = {
         method: 'POST',
-        url: 'https://voicerss-text-to-speech.p.rapidapi.com/',
-        params: {key: '3c482580692a4feaa24fb6df0c0be376'},
+        url: 'https://api.voicerss.org/',
+        params: {key: config.VOICERSS_API_KEY},
         headers: {
           'content-type': 'application/x-www-form-urlencoded',
-          'X-RapidAPI-Key': '518d6d6840msh9ac08012f6cc73fp1f2543jsna24bae0170a3',
-          'X-RapidAPI-Host': 'voicerss-text-to-speech.p.rapidapi.com'
         },
         data: encodedParams
       };
-      let vm = this;
       axios.request(options).then(function (response) {
         console.log(response.data);
         vm.returnedAudio = response.data;
