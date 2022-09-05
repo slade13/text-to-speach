@@ -17,7 +17,7 @@ const axios = require("axios");
 const config = require("../config.js");
 
 export default {
-  name: 'HelloWorld',
+  name: 'MainView',
   props: {
     msg: String
   },
