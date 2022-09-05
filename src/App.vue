@@ -1,15 +1,15 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to text to speech app"/>
+  <MainView msg="Welcome to text to speech app"/>
 </template>
 
 <script>
-import HelloWorld from './components/MainView.vue'
+import MainView from './components/MainView.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MainView
   }
 }
 </script>
