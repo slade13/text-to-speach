@@ -7,6 +7,7 @@
     <LanguageSelector />
     <AudioCodecSelector />
     <AudioFormatSelector />
+    <SpeechRateSelector />
     <textarea id="textToSpeech" v-model="tts"></textarea>
     <button @click="submitText">Submit</button>
     <audio controls :class="{hide : hidePlayer}" ref="audioPlayer">
@@ -20,6 +21,7 @@
 import LanguageSelector from "@/components/LanguageSelector";
 import AudioCodecSelector from "@/components/AudioCodecSelector";
 import AudioFormatSelector from "@/components/AudioFormatSelector";
+import SpeechRateSelector from "@/components/SpeechRateSelector";
 
 const axios = require("axios");
 const config = require("../config.js");
@@ -29,7 +31,8 @@ export default {
   components: {
     LanguageSelector,
     AudioCodecSelector,
-    AudioFormatSelector
+    AudioFormatSelector,
+    SpeechRateSelector
   },
   props: {
     msg: String
