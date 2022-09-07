@@ -1,4 +1,4 @@
-const languages = [
+export const languages = [
     {id: "ar-eg", name: "Arabic (Egypt)", voices: [{name: "Oda", gender: "female", default: true},]},
     {id: "ar-sa", name: "Arabic (Saudi Arabia)", voices: [{name: "Salim", gender: "male", default: true},]},
     {id: "bg-bg", name: "Bulgarian", voices: [{name: "Dimo", gender: "male", default: true},]},
@@ -129,7 +129,7 @@ const languages = [
             {name: "Sofia", gender: "female", default: false},
             {name: "Luna", gender: "female", default: false},
             {name: "Diego", gender: "male", default: false},
-        ]}, 
+        ]},
     {id: "sv-se", name: "Swedish", voices: [
             {name: "Molly", gender: "female", default: true},
             {name: "Hugo", gender: "male", default: false},
@@ -140,9 +140,9 @@ const languages = [
     {id: "vi-vn", name: "Vietnamese", voices: [{name: "Chi", gender: "male", default: true},]
 }];
 
-const audioCodecs = [{id: "MP3"}, {id: "WAV"}, {id: "AAC"}, {id: "OGG"}, {id: "CAF"}];
+export const audioCodecs = [{id: "MP3"}, {id: "WAV"}, {id: "AAC"}, {id: "OGG"}, {id: "CAF"}];
 
-const audioFormats = [
+export const audioFormats = [
     {id: "8khz_8bit_mono", description: "8 kHz, 8 Bit, Mono"},
     {id: "8khz_8bit_stereo", description: "8 kHz, 8 Bit, Stereo"},
     {id: "8khz_16bit_mono", description: "8 kHz, 16 Bit, Mono"},

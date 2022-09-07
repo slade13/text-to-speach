@@ -4,6 +4,9 @@
     <p>
       Enter the text below:
     </p>
+    <LanguageSelector />
+    <AudioCodecSelector />
+    <AudioFormatSelector />
     <textarea id="textToSpeech" v-model="tts"></textarea>
     <button @click="submitText">Submit</button>
     <audio controls :class="{hide : hidePlayer}" ref="audioPlayer">
@@ -14,11 +17,20 @@
 </template>
 
 <script>
+import LanguageSelector from "@/components/LanguageSelector";
+import AudioCodecSelector from "@/components/AudioCodecSelector";
+import AudioFormatSelector from "@/components/AudioFormatSelector";
+
 const axios = require("axios");
 const config = require("../config.js");
 
 export default {
   name: 'MainView',
+  components: {
+    LanguageSelector,
+    AudioCodecSelector,
+    AudioFormatSelector
+  },
   props: {
     msg: String
   },
