@@ -1,6 +1,7 @@
 <template>
   <div class="sliderContainer">
-    <input type="range" min="-10" max="10" value="0" class="slider" id="myRange">
+    <input type="range" min="-10" max="10" v-model="speed" class="slider" id="myRange">
+    {{ speed }}
   </div>
 </template>
 
@@ -9,7 +10,7 @@ export default {
   name: "SpeechRateSelector",
   data() {
     return {
-
+        speed: 0
     }
   }
 }
