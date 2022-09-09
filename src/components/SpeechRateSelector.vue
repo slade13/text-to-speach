@@ -1,16 +1,23 @@
 <template>
   <div class="sliderContainer">
-    <input type="range" min="-10" max="10" v-model="speed" class="slider" id="myRange">
-    {{ speed }}
+    <input type="range" min="-10" max="10" v-model="speed" @input="changeValue" class="slider" id="myRange">
   </div>
 </template>
 
 <script>
 export default {
   name: "SpeechRateSelector",
+  props: ['defaultSpeed'],
+  emits: ['changeValue'],
   data() {
     return {
-        speed: 0
+        speed: this.defaultSpeed,
+    }
+  },
+  methods: {
+    changeValue() {
+      this.$emit('changeValue', this.speed);
+      console.log('emit \'change-value\'')
     }
   }
 }
