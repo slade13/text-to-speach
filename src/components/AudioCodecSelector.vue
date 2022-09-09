@@ -1,5 +1,5 @@
 <template>
-  <select v-model="selectedAudioCodec">
+  <select v-model="selectedAudioCodec" @change="changeValue">
     <option v-for="audioCodec in audioCodecs" :value="audioCodec" :key="audioCodec.id">
       {{ audioCodec.id }}
     </option>
@@ -10,10 +10,18 @@
 const constants = require("../constants");
 export default {
   name: "AudioCodecSelector",
+  props: ['defaultCodec'],
+  emits: ['changeValue'],
   data() {
     return {
-      selectedAudioCodec: constants.audioCodecs[0],
+      selectedAudioCodec: this.defaultCodec,
       audioCodecs: constants.audioCodecs,
+    }
+  },
+  methods: {
+    changeValue() {
+      this.$emit('changeValue', this.selectedAudioCodec);
+      console.log('emit \'change-value\'')
     }
   }
 }
