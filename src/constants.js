@@ -196,3 +196,9 @@ export const audioFormats = [
     {id: "ulaw_44khz_mono", description: "uLaw, 44 kHz, Mono"},
     {id: "ulaw_44khz_stereo", description: "uLaw, 44 kHz, Stereo"},
 ];
+
+export default {
+    audioCodecs,
+    audioFormats,
+    languages
+}
