@@ -1,10 +1,10 @@
 <template>
-  <select v-model="selectedLanguage">
+  <select v-model="selectedLanguage" @change="updateVoice(); changeValue()">
     <option v-for="language in languages" :value="language" :key="language.id">
       {{ language.name }}
     </option>
   </select>
-  <select v-model="selectedVoice">
+  <select v-model="selectedVoice" @change="changeValue">
     <option v-for="voice in selectedLanguage.voices" :value="voice" :key="voice.id">
       {{ voice.name }}
     </option>
@@ -16,16 +16,22 @@
 const constants = require("../constants");
 export default {
   name: "LanguageSelector",
+  props: ['defaultLanguage', 'defaultVoice'],
+  emits: ['changeValue'],
   data() {
     return {
-      selectedLanguage: constants.languages[0],
-      selectedVoice: constants.languages[0].voices[0],
+      selectedLanguage: this.defaultLanguage,
+      selectedVoice: this.defaultVoice,
       languages: constants.languages,
     }
   },
-  watch: {
-    selectedLanguage(newValue) {
-      this.selectedVoice = newValue.voices[0];
+  methods: {
+    updateVoice() {
+      this.selectedVoice = this.selectedLanguage.voices[0];
+    },
+    changeValue() {
+      this.$emit('changeValue', this.selectedLanguage, this.selectedVoice);
+      console.log('emit \'change-value\'')
     }
   }
 }
