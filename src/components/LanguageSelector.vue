@@ -1,10 +1,10 @@
 <template>
-  <select v-model="selectedLanguage" @change="updateVoice(); changeValue()">
+  <select class="selectField" v-model="selectedLanguage" @change="updateVoice(); changeValue()">
     <option v-for="language in languages" :value="language" :key="language.id">
       {{ language.name }}
     </option>
   </select>
-  <select v-model="selectedVoice" @change="changeValue">
+  <select class="selectField" v-model="selectedVoice" @change="changeValue">
     <option v-for="voice in selectedLanguage.voices" :value="voice" :key="voice.id">
       {{ voice.name }}
     </option>

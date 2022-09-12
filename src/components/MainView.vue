@@ -19,7 +19,7 @@
       @change-value="setSpeechRate" />
     {{ speechRate }}
     <textarea id="textToSpeech" v-model="tts"></textarea>
-    <button @click="submitText">Submit</button>
+    <button class="submitButton" @click="submitText">Submit</button>
     <audio controls :class="{hide : hidePlayer}" ref="audioPlayer">
       <source :src="returnedAudio" type="audio/mp3" />
     </audio>
