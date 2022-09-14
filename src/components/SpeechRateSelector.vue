@@ -1,5 +1,6 @@
 <template>
   <div class="sliderContainer">
+    <label class="speed" for="myRange">Speed</label>
     <input type="range" min="-10" max="10" v-model="speed" @input="changeValue" class="slider" id="myRange">
   </div>
 </template>

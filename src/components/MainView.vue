@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1 id="welcoming">{{ msg }}</h1>
     <div class="enterText">
       <p>Enter the text below:</p>
       <textarea id="textToSpeech" v-model="tts"></textarea>
