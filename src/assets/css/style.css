@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 .submitButton {
     background-color: #04AA6D;
     border: none;
@@ -18,7 +22,7 @@
     margin-bottom: 30px;
 }
 
-#welcoming {
+h1 {
     margin: 30px 0 60px 0;
     padding: 20px;
     background-color: #018857;
@@ -29,8 +33,4 @@
 
 .hello {
     font-size: 20px;
-}
-
-.select {
-
 }

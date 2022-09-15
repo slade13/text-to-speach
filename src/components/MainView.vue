@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1 id="welcoming">{{ msg }}</h1>
+      <h1>{{ msg }}</h1>
     <div class="enterText">
       <p>Enter the text below:</p>
       <textarea id="textToSpeech" v-model="tts"></textarea>
@@ -117,6 +117,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 #textToSpeech {
   width: 500px;
   height: 150px;
@@ -127,21 +128,8 @@ button {
   margin: 30px auto;
 }
 
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 .hide {
   display: none;
 }
+
 </style>
