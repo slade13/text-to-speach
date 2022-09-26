@@ -26,7 +26,7 @@ export default {
 
 <style scoped>
 .sliderContainer {
-  margin: 30px 0;
+  margin: 30px 100px;
 }
 .slider {
   -webkit-appearance: none;

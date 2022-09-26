@@ -1,5 +1,5 @@
 <template>
-  <div class="selectLanguage">
+  <div class="selectLanguage selectBox s1">
     <label class="select" for="languageSelect">Select language</label>
   <select class="selectField" id="languageSelect" v-model="selectedLanguage" @change="updateVoice(); changeValue()">
     <option v-for="language in languages" :value="language" :key="language.id">
@@ -7,7 +7,7 @@
     </option>
   </select>
   </div>
-  <div class="selectVoice">
+  <div class="selectVoice selectBox s2">
     <label class="select" for="voiceSelect">Select voice</label>
   <select class="selectField" id="voiceSelect" v-model="selectedVoice" @change="changeValue">
     <option v-for="voice in selectedLanguage.voices" :value="voice" :key="voice.id">

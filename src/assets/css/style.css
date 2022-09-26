@@ -2,35 +2,96 @@ body {
     margin: 0;
 }
 
+.hello {
+  font-size: 20px;
+}
+
+h1 {
+    margin: 30px 0 30px 0;
+    padding: 20px;
+    background-color: #018857;
+    color: white;
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.content {
+    background: url("https://static.vecteezy.com/system/resources/previews/003/593/117/non_2x/single-continuous-line-drawing-of-young-happy-female-consultant-giving-speech-to-the-audience-at-the-office-trendy-public-speaker-presentation-concept-one-line-draw-design-graphic-illustration-vector.jpg") ;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: 80%;
+}
+
+#textToSpeech {
+    width: 720px;
+    height: 170px;
+}
+
+.enterText {
+    margin-bottom: 28px;
+    margin-left: 70px;
+    font-size: 28px;
+    text-align: left;
+}
+
+.selectField {
+    margin: 10px;
+    padding: 7px;
+    width: 150px;
+    border-color: transparent;
+}
+
+ .selectBox {
+     font-size: 22px;
+     margin-left: 100px;
+     width: 583px;
+     height: 55px;
+     border-radius: 20px;
+     vertical-align: text-bottom;
+ }
+
+ .s1 {
+     background-color: #52B788;
+ }
+
+ .s2 {
+     background-color: #74C69D;
+ }
+
+ .s3 {
+     background-color: #95D5B2;
+ }
+
+ .s4 {
+     background-color: #B7E4C7;
+ }
+
+ .buttonPlay {
+     /*display: inline;*/
+ }
+
 .submitButton {
     background-color: #04AA6D;
     border: none;
-    padding: 10px;
-    border-radius: 10px;
+    border-radius: 20px;
+    width: 113px;
+    height: 40px;
+    margin-left: 120px;
 }
 
 .submitButton:hover {
     background-color: #018857;
 }
 
-.selectField {
-    margin: 5px;
-    padding: 7px;
-    width: 150px;
-}
-.enterText {
-    margin-bottom: 30px;
+.hide {
+    display: none;
 }
 
-h1 {
-    margin: 30px 0 60px 0;
-    padding: 20px;
-    background-color: #018857;
-    color: white;
-    font-size: 40px;
-    width: 100%;
+#controls {
+    width: 300px;
+    height: 40px;
+    margin-left: 100px;
 }
 
-.hello {
-    font-size: 20px;
-}
+
