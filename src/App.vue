@@ -1,4 +1,5 @@
 <template>
+  <img alt="Vue logo" src="./assets/logo.png">
   <MainView msg="Welcome to text to speech app"/>
 </template>
 

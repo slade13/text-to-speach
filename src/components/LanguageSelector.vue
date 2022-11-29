@@ -1,20 +1,15 @@
 <template>
-  <div class="selectLanguage">
-    <label class="select" for="languageSelect">Select language</label>
-  <select class="selectField" id="languageSelect" v-model="selectedLanguage" @change="updateVoice(); changeValue()">
+  <select v-model="selectedLanguage" @change="updateVoice(); changeValue()">
     <option v-for="language in languages" :value="language" :key="language.id">
       {{ language.name }}
     </option>
   </select>
-  </div>
-  <div class="selectVoice">
-    <label class="select" for="voiceSelect">Select voice</label>
-  <select class="selectField" id="voiceSelect" v-model="selectedVoice" @change="changeValue">
+  <select v-model="selectedVoice" @change="changeValue">
     <option v-for="voice in selectedLanguage.voices" :value="voice" :key="voice.id">
       {{ voice.name }}
     </option>
   </select>
-  </div>
+
 </template>
 
 <script>

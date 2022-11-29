@@ -1,31 +1,25 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <div class="enterText">
-      <p>Enter the text below:</p>
-      <textarea id="textToSpeech" v-model="tts"></textarea>
-    </div>
-    <div class="languageSelector">
-      <LanguageSelector
+    <p>
+      Enter the text below:
+    </p>
+    <LanguageSelector
       :default-language="language"
       :default-voice="voice"
       @change-value="setLanguageAndVoice"/>
-      </div>
-    <div class="AudioCodecSelector">
-      <AudioCodecSelector
+    <AudioCodecSelector
       :default-codec="audioCodec"
       @change-value="setAudioCodec" />
-      </div>
-    <div class="audioFormatSelector">
     <AudioFormatSelector
       :default-format="audioFormat"
       @change-value="setAudioFormat"/>
-    </div>
     <SpeechRateSelector
         :default-speed="speechRate"
       @change-value="setSpeechRate" />
     {{ speechRate }}
-    <button class="submitButton" @click="submitText">Play</button>
+    <textarea id="textToSpeech" v-model="tts"></textarea>
+    <button @click="submitText">Submit</button>
     <audio controls :class="{hide : hidePlayer}" ref="audioPlayer">
       <source :src="returnedAudio" type="audio/mp3" />
     </audio>
@@ -124,7 +118,8 @@ export default {
 
 button {
   display: block;
-  margin: 30px auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 h3 {
