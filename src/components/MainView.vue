@@ -22,14 +22,13 @@
         :default-format="audioFormat"
         @change-value="setAudioFormat"/>
       </div>
-      <div>
+      <div class="rangeSlider">
         <SpeechRateSelector
             :default-speed="speechRate"
-          @change-value="setSpeechRate" />
-        {{ speechRate }}
+          @change-value="setSpeechRate"/>
       </div>
       <div class="buttonPlay">
-        <button class="submitButton" @click="submitText">PLAY</button>
+        <button class="submitButton" @click="submitText"><b>PLAY</b></button>
         <div id="sraudio" style="    display: inline-block;
     position: absolute;">
           <audio controls :class="{hide : hidePlayer}" ref="audioPlayer" id="controls">

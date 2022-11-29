@@ -1,7 +1,8 @@
 <template>
   <div class="sliderContainer">
-    <label class="speed" for="myRange">Speed</label>
+    <label class="speed" for="myRange">Speed </label>
     <input type="range" min="-10" max="10" v-model="speed" @input="changeValue" class="slider" id="myRange">
+    <span>{{speed}}</span>
   </div>
 </template>
 
@@ -28,9 +29,11 @@ export default {
 .sliderContainer {
   margin: 30px 100px;
 }
+
 .slider {
   -webkit-appearance: none;
-  width: 500px;
+  margin: 20px 20px ;
+  width: 450px;
   height: 15px;
   border-radius: 5px;
   background: #d3d3d3;
@@ -43,11 +46,18 @@ export default {
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: #04AA6D;
   cursor: pointer;
 }
+label {
+  font-size: 25px;
+}
 
+span {
+
+
+}
 </style>
