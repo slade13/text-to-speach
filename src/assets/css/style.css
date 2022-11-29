@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+}
+
+.hello {
+  font-size: 20px;
+}
+
+h1 {
+    margin: 30px 0 30px 0;
+    padding: 20px;
+    background-color: #018857;
+    color: white;
+    font-size: 50px;
+    width: 100%;
+    text-align: center;
+}
+
+.content {
+    background: url("https://static.vecteezy.com/system/resources/previews/003/593/117/non_2x/single-continuous-line-drawing-of-young-happy-female-consultant-giving-speech-to-the-audience-at-the-office-trendy-public-speaker-presentation-concept-one-line-draw-design-graphic-illustration-vector.jpg") ;
+    background-repeat: no-repeat;
+    background-size:  75%;
+    background-position: bottom;
+    padding-bottom: 100px;
+    margin-left: 40px;
+}
+
+#textToSpeech {
+    width: 720px;
+    height: 170px;
+    border: dashed;
+    border-width: 5px;
+    border-color: #40916C;
+}
+
+.enterText {
+    margin-bottom: 28px;
+    margin-left: 70px;
+    font-size: 28px;
+}
+
+.selectField {
+    font-size: 15px;
+    width: 190px;
+    border-color: transparent;
+    opacity: 70%;
+    position: absolute;
+    left: 450px;
+}
+
+ .selectBox {
+     display: flex;
+     font-size: 24px;
+     padding-left: 60px;
+     margin-left: 100px;
+     width: 533px;
+     height: 55px;
+     border-radius: 20px;
+     align-items:center;
+ }
+
+ .s1 {
+     background-color: #52B788;
+ }
+
+ .s2 {
+     background-color: #74C69D;
+ }
+
+ .s3 {
+     background-color: #95D5B2;
+ }
+
+ .s4 {
+     background-color: #B7E4C7;
+ }
+
+
+
+.submitButton {
+    color: white;
+    font-size: 20px;
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 20px;
+    width: 133px;
+    height: 50px;
+    margin-left: 120px;
+}
+
+.submitButton:hover {
+    background-color: #018857;
+}
+
+.hide {
+    display: none;
+}
+
+#controls {
+    width: 300px;
+    height: 40px;
+    margin-left: 100px;
+}
+
+

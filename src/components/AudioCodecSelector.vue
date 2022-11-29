@@ -1,5 +1,6 @@
 <template>
-  <select v-model="selectedAudioCodec" @change="changeValue">
+  <label class="select" for="audioCodecSelect">Select audio codec</label>
+  <select class="selectField" id="audioCodecSelect" v-model="selectedAudioCodec" @change="changeValue">
     <option v-for="audioCodec in audioCodecs" :value="audioCodec" :key="audioCodec.id">
       {{ audioCodec.id }}
     </option>

@@ -1,28 +1,42 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      Enter the text below:
-    </p>
-    <LanguageSelector
-      :default-language="language"
-      :default-voice="voice"
-      @change-value="setLanguageAndVoice"/>
-    <AudioCodecSelector
-      :default-codec="audioCodec"
-      @change-value="setAudioCodec" />
-    <AudioFormatSelector
-      :default-format="audioFormat"
-      @change-value="setAudioFormat"/>
-    <SpeechRateSelector
-        :default-speed="speechRate"
-      @change-value="setSpeechRate" />
-    {{ speechRate }}
-    <textarea id="textToSpeech" v-model="tts"></textarea>
-    <button @click="submitText">Submit</button>
-    <audio controls :class="{hide : hidePlayer}" ref="audioPlayer">
-      <source :src="returnedAudio" type="audio/mp3" />
-    </audio>
+  <div class="hello" id="appView">
+      <h1>{{ msg }}</h1>
+    <div class="content">
+      <div class="enterText">
+        <p>Enter the text below:</p>
+        <textarea id="textToSpeech" v-model="tts"></textarea>
+      </div>
+      <div class="languageSelector">
+        <LanguageSelector
+        :default-language="language"
+        :default-voice="voice"
+        @change-value="setLanguageAndVoice"/>
+        </div>
+      <div class="AudioCodecSelector selectBox s3">
+        <AudioCodecSelector
+        :default-codec="audioCodec"
+        @change-value="setAudioCodec" />
+        </div>
+      <div class="audioFormatSelector selectBox s4">
+      <AudioFormatSelector
+        :default-format="audioFormat"
+        @change-value="setAudioFormat"/>
+      </div>
+      <div class="rangeSlider">
+        <SpeechRateSelector
+            :default-speed="speechRate"
+          @change-value="setSpeechRate"/>
+      </div>
+      <div class="buttonPlay">
+        <button class="submitButton" @click="submitText"><b>PLAY</b></button>
+        <div id="sraudio" style="    display: inline-block;
+    position: absolute;">
+          <audio controls :class="{hide : hidePlayer}" ref="audioPlayer" id="controls">
+            <source :src="returnedAudio" type="audio/mp3" />
+          </audio>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -110,33 +124,21 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-#textToSpeech {
-  width: 500px;
-  height: 150px;
-}
 
-button {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-.hide {
-  display: none;
-}
-</style>
+<!--<!DOCTYPE html><html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet" />
+</head>
+<body>
+<div class="v2_2">
+  <div class="v14_17"></div>
+  <div class="v2_3"></div>
+    <span class="v2_4">Welcome to text to speech app</span>
+    <span class="v2_7">Enter the text below</span>
+  <div class="name"></div><span class="v2_16">Speed</span>
+  <div class="name"></div>
+  <div class="name"></div>
+  <div class="v11_48"></div>
+</div>
+</body>
+</html> -->
